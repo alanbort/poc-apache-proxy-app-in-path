@@ -1,0 +1,18 @@
+---
+version: "3.3"
+services:
+  web:
+    build: .
+    container_name: web
+    hostname: web.127.0.0.1.nip.io
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html/sample-site:/var/www/html/sample-site
+      - ./html/sample-app:/var/www/html/sample-app
+    environment:
+      - APACHE_RUN_DIR=/etc/apache2
+      - APACHE_PID_FILE=/etc/apache2/pid.lock
+      - APACHE_RUN_USER=apache
+      - APACHE_RUN_GROUP=apache
+      - APACHE_LOG_DIR=/var/log/apache2
